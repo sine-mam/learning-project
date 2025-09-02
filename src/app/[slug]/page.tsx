@@ -14,7 +14,7 @@ export default function DynamicPage() {
 
   useEffect(() => {
     if (!slug) return;
-    fetch("https://darkturquoise-falcon-503981.hostingersite.com/graphql", {
+    fetch(process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL || "https://darkturquoise-falcon-503981.hostingersite.com/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

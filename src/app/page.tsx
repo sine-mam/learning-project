@@ -12,7 +12,7 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    fetch("https://darkturquoise-falcon-503981.hostingersite.com/graphql", {
+    fetch(process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL || "https://darkturquoise-falcon-503981.hostingersite.com/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

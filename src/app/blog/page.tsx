@@ -17,7 +17,7 @@ export default function BlogPage() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    fetch("https://darkturquoise-falcon-503981.hostingersite.com/graphql", {
+    fetch(process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL || "https://darkturquoise-falcon-503981.hostingersite.com/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function BlogPage() {
             <h2 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-white'}`} dangerouslySetInnerHTML={{ __html: post.title }} />
             <div className={`prose prose-sm mb-4 ${darkMode ? 'prose-invert' : ''}`} dangerouslySetInnerHTML={{ __html: post.excerpt }} />
             <a
-              href={"https://darkturquoise-falcon-503981.hostingersite.com" + post.uri}
+              href={(process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL || "https://darkturquoise-falcon-503981.hostingersite.com") + post.uri}
               target="_blank"
               rel="noopener noreferrer"
               className={`text-blue-600 dark:text-blue-400 hover:underline`}
